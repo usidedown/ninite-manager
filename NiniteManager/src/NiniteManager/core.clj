@@ -1,5 +1,4 @@
-(ns NiniteManager.core (:require clojure.string)
-  (:require clojure.contrib.java-utils))
+(ns NiniteManager.core (:require clojure.string))
 
 (def categories  { "Web Browsers" {"Chrome" "Chrome"
                                    "Safari" "Safari"
@@ -127,23 +126,6 @@
 
 (defn browse-ninite-download [programs]
   (clojure.java.browse/browse-url (get-ninite-download-link programs)))
-
-(defn save-apps [programs]
-  )
-
-(defn frm-save
- "Save a clojure form to file."
-  [#^java.io.File file form]
-  (with-open [w (java.io.FileWriter. file)]
-    (binding [*out* w *print-dup* true] (prn frm))))
-
-(defn frm-load
-  "Load a clojure form from file."
-  [#^java.io.File file]
-  (with-open [r (java.io.PushbackReader.
-     (java.io.FileReader. file))]
-     (let [rec (read r)]
-      rec)))
 
 
 (defn -main

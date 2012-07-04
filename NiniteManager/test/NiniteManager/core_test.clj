@@ -18,4 +18,4 @@
            (is (= "https://ninite.com/?select=itunes/" (get-ninite-select-link [["Media" "iTunes"]])))
            (is (= "https://ninite.com/?select=firefox-.net/" (get-ninite-select-link [["Web Browsers" "Firefox"] ["Runtimes" ".NET"]])))))
 
-(clojure.test/run-all-tests)
+(clojure.test/run-tests)
