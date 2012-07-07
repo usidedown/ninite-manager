@@ -43,6 +43,18 @@
                                            (System/exit 0))))
     (-> f pack! show!)))
 
+(defn display-remote []
+  (let [f (frame :title "NiniteManager Remote" :on-close :dispose
+                 :content (flow-panel :items [(button :text "Download"
+                                                          :listen [:action (fn [e] (download-exe))] )
+                                                  (button :text "Ninite Website"
+                                                          :listen [:action (fn [e] (browse-select))])
+                                                  (button :text "Ninite Download Page"
+                                                          :listen [:action (fn [e] (browse-download))])]))]
+    
+    (-> f pack! show!)))
+    
+
 (defn display-tabbed []
   (let [t (tabbed-panel :placement :top :overflow :wrap)
         f (frame :title "NiniteManager" :content t)]
@@ -55,4 +67,5 @@
 (defn -main [& args]
   (make-prog)
   (load-programs)
-  (display))
+  (display)
+  (display-remote))
