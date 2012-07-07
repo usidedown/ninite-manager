@@ -171,6 +171,10 @@
 (defn download-exe []
   (download (get-ninite-download-link *programs*) "Ninite.exe"))
 
+(defn clear []
+  (def ^:dynamic *programs* #{}))
+  
+
   
 (defn -main
   "I don't do a whole lot."
