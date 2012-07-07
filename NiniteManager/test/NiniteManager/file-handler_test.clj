@@ -1,6 +1,6 @@
-(ns NiniteManager.fileHandler-test
+(ns NiniteManager.file-handler-test
   (:use clojure.test
-        NiniteManager.fileHandler))
+        NiniteManager.file-handler))
 
 (deftest frm-load-test
   (let [f (doto (java.io.File/createTempFile "temp" ".txt") .deleteOnExit)

@@ -5,7 +5,7 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.3.0"]
                  [seesaw "1.4.1"]]
-  :main NiniteManager.core
+  :main NiniteManager.gui
   :jar-name "NiniteManager.jar"
   :uberjar-name "NiniteManager-standalone.jar")
 

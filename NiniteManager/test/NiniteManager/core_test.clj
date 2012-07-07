@@ -8,10 +8,15 @@
   (is (= '("foxit") (get-printable-programs [["Documents" "Foxit Reader"]])))
   (is (= '("notepadplusplus" "googleearth") (get-printable-programs [["Other" "Google Earth"] ["Developer Tools" "Notepad++"]])))))
 
+(deftest get-ninite-download-page-test
+  (testing "download link"
+           (is (= "https://ninite.com/itunes/" (get-ninite-download-page [["Media" "iTunes"]])))
+           (is (= "https://ninite.com/firefox-.net/" (get-ninite-download-page [["Web Browsers" "Firefox"] ["Runtimes" ".NET"]])))))
+
 (deftest get-ninite-download-link-test
   (testing "download link"
-           (is (= "https://ninite.com/itunes/" (get-ninite-download-link [["Media" "iTunes"]])))
-           (is (= "https://ninite.com/firefox-.net/" (get-ninite-download-link [["Web Browsers" "Firefox"] ["Runtimes" ".NET"]])))))
+           (is (= "https://ninite.com/itunes/ninite.exe" (get-ninite-download-link [["Media" "iTunes"]])))
+           (is (= "https://ninite.com/firefox-.net/ninite.exe" (get-ninite-download-link [["Web Browsers" "Firefox"] ["Runtimes" ".NET"]])))))
 
 (deftest get-ninite-select-link-test
   (testing "select link"
