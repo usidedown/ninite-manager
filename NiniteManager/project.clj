@@ -3,7 +3,7 @@
   :url "https://code.google.com/p/ninite-manager"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :dependencies [[org.clojure/clojure "1.3.0"]
+  :dependencies [[org.clojure/clojure "1.4.0"]
                  [seesaw "1.4.1"]]
   :main NiniteManager.gui
   :jar-name "NiniteManager.jar"

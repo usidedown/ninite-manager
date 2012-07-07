@@ -100,14 +100,20 @@
                  "Lifehacker Extended Pack" {"Office Viewers" "officeviewers"
                                              "AutoHotkey" "AutoHotkey"}})
 
+;(defn get-printable-programs [programs]
+;  (loop [acc ()
+;         [[cat app] prs] [(first programs) (next programs)]]
+;    (let [calc (conj acc (get (get categories cat) app))]
+;      (if prs
+;        (recur calc
+;               prs)
+;        calc))))
+
 (defn get-printable-programs [programs]
-  (loop [acc ()
-         [[cat app] prs] [(first programs) (next programs)]]
-    (let [calc (conj acc (get (get categories cat) app))]
-      (if prs
-        (recur calc
-               prs)
-        calc))))
+  (reduce (fn [acc [cat app]] 
+            (conj acc (get (get categories cat) app))) 
+          #{} 
+          programs)) 
 
 (defn get-attacher 
   ([link]
@@ -139,6 +145,33 @@
 (defn browse-ninite-download [programs]
   (clojure.java.browse/browse-url (get-ninite-download-page programs)))
 
+
+(def ^:dynamic *programs* #{})
+
+(defn add-program [cat app]
+  (def ^:dynamic *programs*
+    (conj *programs* [cat app])))
+
+(defn remove-program [cat app]
+  (def ^:dynamic *programs*
+    (disj *programs* [cat app])))
+
+(defn load-programs []
+  (def ^:dynamic *programs* (load-apps)))
+
+(defn save-programs []
+  (save-apps *programs*))
+
+(defn browse-select []
+  (browse-ninite-select *programs*))
+
+(defn browse-download []
+  (browse-ninite-download *programs*))
+
+(defn download-exe []
+  (download (get-ninite-download-link *programs*) "Ninite.exe"))
+
+  
 (defn -main
   "I don't do a whole lot."
   [& args]
