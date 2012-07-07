@@ -25,3 +25,7 @@
 
 (defn load-apps []
   (frm-load (as-file filename)))
+
+(defn download  [src-url out-file]
+  (copy (input-stream src-url) (as-file out-file) :encoding "ASCII"))
+  

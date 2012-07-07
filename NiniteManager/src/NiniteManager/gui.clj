@@ -1,5 +1,5 @@
 (ns NiniteManager.gui
-  (:use seesaw.core NiniteManager.core)
+  (:use seesaw.core [NiniteManager.core :exclude [-main]])
   (:gen-class))
 
 (defn add-tab [panel tab]

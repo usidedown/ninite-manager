@@ -137,7 +137,7 @@
   (clojure.java.browse/browse-url (get-ninite-select-link programs)))
 
 (defn browse-ninite-download [programs]
-  (clojure.java.browse/browse-url (get-ninite-download-link programs)))
+  (clojure.java.browse/browse-url (get-ninite-download-page programs)))
 
 (defn -main
   "I don't do a whole lot."
