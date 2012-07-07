@@ -4,7 +4,7 @@
            java.io.FileReader
            java.io.FileWriter))
 
-(def filename "progs")
+(def filename ".progs")
 
 (defn frm-save
  "Save a clojure form to file."
@@ -22,6 +22,12 @@
 
 (defn save-apps [programs]
   (frm-save (as-file filename) programs))
+
+(defn make-prog []
+  (when-not (.exists (as-file filename))
+    (with-open [w (writer filename)]
+      (.write w "#{}\n"))))
+  
 
 (defn load-apps []
   (frm-load (as-file filename)))

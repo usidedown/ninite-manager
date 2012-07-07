@@ -1,5 +1,7 @@
 (ns NiniteManager.gui
-  (:use seesaw.core [NiniteManager.core :exclude [-main]])
+  (:use seesaw.core
+        [NiniteManager.core :exclude [-main]]
+        [NiniteManager.file-handler :include [make-prog]])
   (:import [java.awt.event WindowAdapter]
            [System])
   (:gen-class))
@@ -51,5 +53,6 @@
     (-> f pack! show!)))
 
 (defn -main [& args]
+  (make-prog)
   (load-programs)
   (display))
