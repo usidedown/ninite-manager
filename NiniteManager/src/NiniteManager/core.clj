@@ -3,7 +3,7 @@
   (:use NiniteManager.file-handler)
   (:gen-class))
 
-(def categories  { "Web Browsers" {"Chrome" "Chrome"
+(def categories  (array-map "Web Browsers" {"Chrome" "Chrome"
                                    "Safari" "Safari"
                                    "Opera" "Opera"
                                    "Firefox" "Firefox"}
@@ -98,7 +98,7 @@
                  "Lifehacker Utilities" {"SABnzbd" "SABnzbd"
                                          "CrashPlan" "CrashPlan"}
                  "Lifehacker Extended Pack" {"Office Viewers" "officeviewers"
-                                             "AutoHotkey" "AutoHotkey"}})
+                                             "AutoHotkey" "AutoHotkey"}))
 
 ;(defn get-printable-programs [programs]
 ;  (loop [acc ()

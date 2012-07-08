@@ -31,7 +31,7 @@
   (let [ret (horizontal-panel)]
     (doseq [keyval cat-seq]
       (add-cat ret (key keyval) (val keyval)))
-    ret))
+    (config! ret :items (reverse (config ret :items)))))
 
 ;TODO refactor
 (defn display []
