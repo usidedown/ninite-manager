@@ -119,29 +119,21 @@
           #{} 
           programs)) 
 
-(defn get-attacher 
-  ([link]
-    (get-attacher link ""))
-  ([link suff]
-    (let [attacher
-          (fn [programs]
-            (let [prgs (get-printable-programs programs)]
-              (.toLowerCase (str link 
-                                 (clojure.string/join (map (fn [prog] (str prog "-")) 
-                                                           (next prgs)))
-                                 (first prgs)
-                                 "/"
-                                 suff))))]
-      attacher)))
-
 (defn get-ninite-download-link [programs]
-  ((get-attacher ninitecom "ninite.exe") programs))
+  (.toLowerCase (str ninitecom 
+                     (clojure.string/join "-" (get-printable-programs programs))
+                     "/ninite.exe")))
 
 (defn get-ninite-download-page [programs]
-  ((get-attacher ninitecom) programs))
+  (.toLowerCase (str ninitecom 
+                     (clojure.string/join "-" (get-printable-programs programs))
+                     "/")))
 
 (defn get-ninite-select-link [programs]
-  ((get-attacher (str ninitecom "?select=")) programs))
+  (.toLowerCase (str ninitecom
+                      "?select="
+                     (clojure.string/join "-" (get-printable-programs programs))
+                     "/")))
 
 (defn browse-ninite-select [programs]
   (clojure.java.browse/browse-url (get-ninite-select-link programs)))
