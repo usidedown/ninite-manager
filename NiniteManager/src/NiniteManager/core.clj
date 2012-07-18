@@ -3,6 +3,8 @@
   (:use NiniteManager.file-handler)
   (:gen-class))
 
+(def ninitecom "https://ninite.com/")
+
 (def categories  (array-map "Web Browsers" {"Chrome" "Chrome"
                                    "Safari" "Safari"
                                    "Opera" "Opera"
@@ -98,7 +100,8 @@
                  "Lifehacker Utilities" {"SABnzbd" "SABnzbd"
                                          "CrashPlan" "CrashPlan"}
                  "Lifehacker Extended Pack" {"Office Viewers" "officeviewers"
-                                             "AutoHotkey" "AutoHotkey"}))
+                                             "AutoHotkey" "AutoHotkey"
+                                             "Growl" "growl"}))
 
 ;(defn get-printable-programs [programs]
 ;  (loop [acc ()
@@ -131,13 +134,13 @@
       attacher)))
 
 (defn get-ninite-download-link [programs]
-  ((get-attacher "https://ninite.com/" "ninite.exe") programs))
+  ((get-attacher ninitecom "ninite.exe") programs))
 
 (defn get-ninite-download-page [programs]
-  ((get-attacher "https://ninite.com/") programs))
+  ((get-attacher ninitecom) programs))
 
 (defn get-ninite-select-link [programs]
-  ((get-attacher "https://ninite.com/?select=") programs))
+  ((get-attacher (str ninitecom "?select=")) programs))
 
 (defn browse-ninite-select [programs]
   (clojure.java.browse/browse-url (get-ninite-select-link programs)))

@@ -6,8 +6,6 @@
            [System])
   (:gen-class))
 
-(defn add-tab [panel tab]
-     (config! panel :tabs (conj (:tabs panel) tab)))
 
 (defn get-checkbox [cat prog-name]
   (let [c (checkbox :text prog-name 
@@ -60,7 +58,7 @@
         f (frame :title "NiniteManager" :content t)]
     
     (doseq [keyval categories]
-      (add-tab t {:title (key keyval) 
+      (add! t {:title (key keyval) 
                   :content (get-jpanel (key keyval) (val keyval))}))
     (-> f pack! show!)))
 
