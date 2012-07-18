@@ -83,7 +83,8 @@
                               "Revo" "Revo"
                               "Launchy" "Launchy"
                               "Glary" "Glary"
-                              "InfraRecorder" "InfraRecorder"}
+                              "InfraRecorder" "InfraRecorder"
+                              "WinDirStat" "windirstat"}
                  "Compression" {"7-Zip" "7zip"
                                 "PeaZip" "PeaZip"
                                 "WinRAR" "WinRAR"}
