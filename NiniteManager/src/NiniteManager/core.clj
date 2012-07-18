@@ -120,20 +120,26 @@
           programs)) 
 
 (defn get-ninite-download-link [programs]
-  (.toLowerCase (str ninitecom 
-                     (clojure.string/join "-" (get-printable-programs programs))
-                     "/ninite.exe")))
+  (if (empty? programs)
+    (throw (.IllegalArgumentException "programs is empty"))
+    (.toLowerCase (str ninitecom 
+                       (clojure.string/join "-" (get-printable-programs programs))
+                       "/ninite.exe"))))
 
 (defn get-ninite-download-page [programs]
-  (.toLowerCase (str ninitecom 
-                     (clojure.string/join "-" (get-printable-programs programs))
-                     "/")))
+  (if (empty? programs)
+    (throw (.IllegalArgumentException "programs is empty"))
+    (.toLowerCase (str ninitecom 
+                       (clojure.string/join "-" (get-printable-programs programs))
+                       "/"))))
 
 (defn get-ninite-select-link [programs]
-  (.toLowerCase (str ninitecom
-                      "?select="
-                     (clojure.string/join "-" (get-printable-programs programs))
-                     "/")))
+  (if (empty? programs)
+    ninitecom
+    (.toLowerCase (str ninitecom
+                       "?select="
+                       (clojure.string/join "-" (get-printable-programs programs))
+                       "/"))))
 
 (defn browse-ninite-select [programs]
   (clojure.java.browse/browse-url (get-ninite-select-link programs)))
