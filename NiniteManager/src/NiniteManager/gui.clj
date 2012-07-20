@@ -1,5 +1,6 @@
 (ns NiniteManager.gui
   (:use seesaw.core
+        seesaw.swingx
         [NiniteManager.core :exclude [-main]]
         [NiniteManager.file-handler :include [make-prog]])
   (:import [java.awt.event WindowAdapter]
@@ -44,11 +45,11 @@
 (defn display-remote []
   (let [f (frame :title "NiniteManager Remote" :on-close :dispose
                  :content (flow-panel :items [(button :text "Download"
-                                                          :listen [:action (fn [e] (download-exe))] )
-                                                  (button :text "Ninite Website"
-                                                          :listen [:action (fn [e] (browse-select))])
-                                                  (button :text "Ninite Download Page"
-                                                          :listen [:action (fn [e] (browse-download))])]))]
+                                                      :listen [:action (fn [e] (download-exe))] )
+                                              (hyperlink :text "Ninite Website"
+                                                      :listen [:action (fn [e] (browse-select))])
+                                              (hyperlink :text "Ninite Download Page"
+                                                      :listen [:action (fn [e] (browse-download))])]))]
     
     (-> f pack! show!)))
     
