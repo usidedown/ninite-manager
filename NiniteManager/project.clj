@@ -6,6 +6,7 @@
   :dependencies [[org.clojure/clojure "1.4.0"]
                  [seesaw "1.4.1"]]
   :main NiniteManager.gui
+  :launch4j-config-file "resources/config.xml"
   :jar-name "NiniteManager.jar"
   :uberjar-name "NiniteManager-standalone.jar")
 
