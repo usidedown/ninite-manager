@@ -4,7 +4,8 @@
            java.io.FileReader
            java.io.FileWriter))
 
-(def filename ".progs")
+(def progs-filename ".progs")
+(def categories-filename ".categories")
 
 (defn frm-save
  "Save a clojure form to file."
@@ -21,16 +22,25 @@
       rec)))
 
 (defn save-apps [programs]
-  (frm-save (as-file filename) programs))
+  (frm-save (as-file progs-filename) programs))
+
+(defn save-categories [categories]
+  (frm-save (as-file categories-filename) categories))
 
 (defn make-prog []
-  (when-not (.exists (as-file filename))
-    (with-open [w (writer filename)]
+  (when-not (.exists (as-file progs-filename))
+    (with-open [w (writer progs-filename)]
       (.write w "#{}\n"))))
   
+(defn make-categories [categories]
+  (when-not (.exists (as-file categories-filename))
+              (save-categories categories)))
 
-(defn load-apps []
-  (frm-load (as-file filename)))
+(defn load-progs-from-file []
+  (frm-load (as-file progs-filename)))
+
+(defn load-categories-from-file []
+  (frm-load (as-file categories-filename)))
 
 (defn download  [src-url out-file]
   (copy (input-stream src-url) (as-file out-file) :encoding "ASCII"))

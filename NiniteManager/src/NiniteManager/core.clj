@@ -5,7 +5,7 @@
 
 (def ninitecom "https://ninite.com/")
 
-(def categories  (array-map "Web Browsers" {"Chrome" "Chrome"
+(def default-categories  (array-map "Web Browsers" {"Chrome" "Chrome"
                                    "Safari" "Safari"
                                    "Opera" "Opera"
                                    "Firefox" "Firefox"}
@@ -107,15 +107,17 @@
 ;(defn get-printable-programs [programs]
 ;  (loop [acc ()
 ;         [[cat app] prs] [(first programs) (next programs)]]
-;    (let [calc (conj acc (get (get categories cat) app))]
+;    (let [calc (conj acc (get (get *categories* cat) app))]
 ;      (if prs
 ;        (recur calc
 ;               prs)
 ;        calc))))
 
+(def ^:dynamic *categories* #{})
+
 (defn get-printable-programs [programs]
   (reduce (fn [acc [cat app]] 
-            (conj acc (get (get categories cat) app))) 
+            (conj acc (get (get *categories* cat) app))) 
           #{} 
           programs)) 
 
@@ -159,7 +161,10 @@
     (disj *programs* [cat app])))
 
 (defn load-programs []
-  (def ^:dynamic *programs* (load-apps)))
+  (def ^:dynamic *programs* (load-progs-from-file)))
+
+(defn load-categories []
+   (def ^:dynamic *categories* (load-categories-from-file)))
 
 (defn save-programs []
   (save-apps *programs*))

@@ -34,7 +34,7 @@
 
 ;TODO refactor
 (defn display []
-  (let [par (split-at (/ (count categories) 2) categories)
+  (let [par (split-at (/ (count *categories*) 2) *categories*)
         t (vertical-panel :items (map cat-panel par))
         f (frame :title "NiniteManager" :content t :on-close :dispose)]
     (.addWindowListener f (proxy [WindowAdapter] []
@@ -58,13 +58,15 @@
   (let [t (tabbed-panel :placement :top :overflow :wrap)
         f (frame :title "NiniteManager" :content t)]
     
-    (doseq [keyval categories]
+    (doseq [keyval *categories*]
       (add! t {:title (key keyval) 
                   :content (get-jpanel (key keyval) (val keyval))}))
     (-> f pack! show!)))
 
 (defn -main [& args]
   (make-prog)
+  (make-categories default-categories)
   (load-programs)
+  (load-categories)
   (display)
   (display-remote))
