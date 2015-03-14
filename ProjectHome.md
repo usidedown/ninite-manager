@@ -1,0 +1,1 @@
+A simple application to save the ninite programs, download the installer and launch the website.
